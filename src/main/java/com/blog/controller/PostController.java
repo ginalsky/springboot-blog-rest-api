@@ -2,6 +2,7 @@ package com.blog.controller;
 
 
 import com.blog.dtos.PostDto;
+import com.blog.dtos.PostResponse;
 import com.blog.entity.Post;
 import com.blog.service.PostService;
 import org.springframework.http.HttpStatus;
@@ -28,12 +29,14 @@ public class PostController {
 
     //get all posts rest api
     @GetMapping
-    public List<PostDto> getAllPosts(
+    public PostResponse getAllPosts(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
-            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
+            @RequestParam(value = "sortDirection", defaultValue = "asc", required = false) String sortDirection
     ){
 
-        return postService.getAllPosts(pageNo, pageSize);
+        return postService.getAllPosts(pageNo, pageSize, sortBy, sortDirection);
     }
     //get post by id rest api
     @GetMapping("/{id}")

@@ -1,6 +1,7 @@
 package com.blog.service;
 
 import com.blog.dtos.PostDto;
+import com.blog.dtos.PostResponse;
 import com.blog.entity.Post;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public interface PostService {
     PostDto createPost(PostDto postDto);
 
-    List<PostDto> getAllPosts(int pageNo, int pageSize);
+    PostResponse getAllPosts(int pageNo, int pageSize,String sortBy, String sortDirection);
 
     PostDto getPostById(int id);
 
