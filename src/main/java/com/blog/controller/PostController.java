@@ -3,14 +3,12 @@ package com.blog.controller;
 
 import com.blog.dtos.PostDto;
 import com.blog.dtos.PostResponse;
-import com.blog.entity.Post;
 import com.blog.service.PostService;
 import com.blog.utils.AppConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/posts")

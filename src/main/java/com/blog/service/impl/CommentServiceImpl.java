@@ -32,9 +32,7 @@ public class CommentServiceImpl implements CommentService {
 
         Comment newComment = commentRepository.save(comment);
 
-        CommentDto commentResponse = mapToDto(newComment);
-
-        return commentResponse;
+        return mapToDto(newComment);
     }
 
     //convert entity to DTO
