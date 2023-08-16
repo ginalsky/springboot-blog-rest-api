@@ -39,12 +39,24 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentDto> getAllCommentsByPostId(int postID) {
+    public List<CommentDto> getAllCommentsByPostId(int postId) {
         // retrieve comment by postId
-        List<Comment> comments = commentRepository.findByPostId(postID);
+        List<Comment> comments = commentRepository.findByPostId(postId);
 
         // convert list of comment entities to list of comment dtos
         return comments.stream().map(comment -> mapToDto(comment)).collect(Collectors.toList());
+    }
+
+    @Override
+    public CommentDto getCommentById(int postId, int commentId) {
+        //retrieve post entity by id
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
+        //retrieve comment by id
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", commentId));
+        //
+        return mapToDto(comment);
     }
 
     //convert entity to DTO
